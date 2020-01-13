@@ -11,14 +11,17 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      //keeps track of the testimonial being shown on the slider
       slideIndex: 0
     };
   }
 
   componentDidMount() {
+    // this ensures that the testimonials aren't blank on loading
     this.plusSlides(+1)
   }
 
+  //keeps track of the slider and puts the next slide onto the screen when the next button is clicked
   plusSlides = (n) => {
     let m = this.state.slideIndex + n
     var slides = document.getElementsByClassName('reisetopia-testimonials');
@@ -39,8 +42,8 @@ class App extends React.Component {
     return (
 
       <div className="App">
-      <div className="inner">
 
+        {/* a list of the pictures displayed to the user*/}
         <section id='grid'>
 
           <div className='wrapper'>
@@ -64,6 +67,7 @@ class App extends React.Component {
 
         </section>
 
+        {/* testimonials used for the testimonial carousel / slider   */}
         <section id='carousel'>
 
           <div className="image-carousel">
@@ -88,6 +92,8 @@ class App extends React.Component {
               </div>
 
             </div>
+
+        {/* will provide left and right arrows as well as an onclick function to move to the next slide */}
             <div className="arrows">
               <div className="prev" onClick={() => { this.plusSlides(-1) }} ><img src={leftarrow} alt="Left Arrow" /></div>
               <div className="next" onClick={() => { this.plusSlides(+1) }} ><img src={rightarrow} alt="Right Arrow" /></div>
@@ -96,11 +102,11 @@ class App extends React.Component {
 
         </section>
 
+        {/* will display the logo in the footer of the web page */}
         <section id='footer'>
           <img src={logo} alt="reisetopia logo" />
         </section>
 
-      </div>
       </div>
 
     );

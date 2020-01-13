@@ -10,12 +10,15 @@ $desktop: 800px;
     @return map-get($colors, $color-name);
 }
 
-//optimised for 1024px width
+//optimised for 1024px width - the mixin below specifies desktop versions which being at 800px width
 @mixin desktop {
     @media (min-width: #{$desktop}){
         @content; 
     }
 }
+
+// will help divide the screen into grids with the first input being the number of columns and the second being the 
+// margin between the columns
 
 @mixin grid ($cols, $mgn){
     float: left;
@@ -39,11 +42,10 @@ body {
 
 .App {
 
+    //adjustment for the desktop version
     @include desktop {
         margin: 20px 20px * 7;
     }
-
-.inner {
 
 
 section#grid {
@@ -53,10 +55,12 @@ section#grid {
         border-radius: $borders;
 
         .portrait{
-        
+            
+            //will split the screen into a 1 by 2 grid with a margin of 2% between the images
             @include grid(2,2%);
             position: relative;
 
+            //hover effects whill make the image bigger and highlight it
             img:hover {
                 opacity: .5;
                 transform: scale(1.015);
@@ -70,6 +74,7 @@ section#grid {
         
         }
 
+        //similar adjustmnets to the ones above, applied to the landscape images
         .landscape {
             position: relative;
             @include grid(1,2%);
@@ -86,6 +91,7 @@ section#grid {
             }
         }
 
+        //adjustments for the desktop
         @include desktop {
             .portrait {
                 position: relative;
@@ -105,6 +111,7 @@ section#grid {
             }
         }
 
+        //will add captions onto the landscape pictures
         .center-bottom-landscape {
             position: absolute;   
             color: white; 
@@ -115,8 +122,9 @@ section#grid {
             @include desktop {
                 left: 45%;
             }
-
           }
+
+          //will add captions onto the portrait pictures
           .center-bottom-portrait {
             position: absolute;   
             color: white; 
@@ -134,7 +142,7 @@ section#grid {
 } 
 
 section#carousel {
-
+    //holds the arrow images for the carousel
     .image-carousel {
         height: 85vh;
         width: 100%;
@@ -148,6 +156,7 @@ section#carousel {
             position: relative;
         }
 
+        //adds the background image for the testimonials
         .coverimage {
             background-color: color(primary);
 
@@ -157,6 +166,7 @@ section#carousel {
             }
 
             @include desktop {
+                //adds a desktop version of the image when the page is being viewed on a larger device
                 content: url('./images/desktop/TestimonialCoverImage_Desktop.png');
                 position: absolute;
                 width: 90%;
@@ -206,6 +216,7 @@ section#carousel {
         }
 
         .arrows{
+            //arrows in both directions
             position: absolute;
             display: flex;
             left: 37%;
@@ -220,6 +231,7 @@ section#carousel {
                 text-align: left;
             }
 
+            //right arrow for next testimonial
             .next{
                 top: 0;
                 padding-left: 5px;
@@ -231,14 +243,16 @@ section#carousel {
                     top: 0;
                     padding-left: 2px;
                     content: url('./images/desktop/RightArrow_Desktop.png');
+
                     &:hover {
                         color: #51A0D5;
-                        transform: scale(1.1);
-                        opacity: 0.8;
+                        transform: scale(1.15);
+                        opacity: 0.6;
                     }
                 }
             }
 
+            //left arrow for previous testimonial
             .prev{
                 top: 0;
                 padding-right: 5px;
@@ -253,8 +267,8 @@ section#carousel {
 
                     &:hover {
                         color: #51A0D5;
-                        transform: scale(1.1);
-                        opacity: 0.8;
+                        transform: scale(1.15);
+                        opacity: 0.6;
                     }
                 }
             }
@@ -265,6 +279,7 @@ section#carousel {
 
 }
 
+//places logo at the middle of the footer
 section#footer {
     background-color: color(primary);
     text-align: center;
@@ -284,5 +299,4 @@ section#footer {
     }
 }
 
-}
 }
