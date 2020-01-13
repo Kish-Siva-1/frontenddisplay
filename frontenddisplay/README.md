@@ -23,20 +23,17 @@ To install this repository simply clone the repo (this one) by running:
 git clone git@github.com:Kish-Siva-1/frontenddisplay.git
 ```
 
-Open the file by running each of the commands below in a new terminal: 
+Open the file by running the command below in a new terminal:
 
-1. `cd firesale-client/`
-2. `cd firesale-api/`
+1. `cd frontenddisplay`
 
 Then install the relevant dependencies with:  
 
-* `npm install` (for JS)
-* `bundle install` (for Ruby on Rails)
+* `npm install`
 
-Finally run both by using: 
+Finally run by using:
 
-* `npm start` (for JS)
-* `rails s` (for Ruby on Rails)
+* `npm start`
 
 ## License
 
