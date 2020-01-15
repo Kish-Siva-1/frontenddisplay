@@ -9,7 +9,7 @@ import testcovimg from './images/mobile/TestimonialCoverImage.png'
 class App extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props); //allows access to 'this'
     this.state = {
       //keeps track of the testimonial being shown on the slider
       slideIndex: 0
