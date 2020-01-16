@@ -8,6 +8,7 @@ $colors:(
 $padding: 15px;
 $borders: 15px;
 $desktop: 800px;
+$side-padding: 25vh;
 
 // allows us to highlight the 
 @function color($color-name){
@@ -48,15 +49,20 @@ body {
 
     //adjustment for the desktop version
     @include desktop {
-        margin: 20px 20px * 7; //first input is top and bottom whilst second input is left and right
+        margin: 0 20vh; //first input is top and bottom whilst second input is left and right
     }
 
-
 section#grid {
+    overflow: auto;
+    padding: 10px 0;
 
     .wrapper {
-        padding: 10px;
         border-radius: $borders;
+        width: 100%;
+
+        @include desktop {
+            display: table; 
+        }        
 
         .portrait{
             
@@ -81,7 +87,9 @@ section#grid {
         //similar adjustments to the ones above, applied to the landscape images
         .landscape {
             position: relative;
-            @include grid(1,2%);
+            // @include grid(1,2%);
+            // width: 100%;
+            // top: 2%;
 
             img:hover {
                 opacity: .5;
@@ -98,18 +106,16 @@ section#grid {
         //adjustments for the desktop
         @include desktop {
             .portrait {
-                position: relative; //default is static. relative is relative to the default. absolute is in reference to ancestor
-                @include grid(4,1%)
+                @include grid(4,0.5%)
             }
 
             .landscape {
-                position: relative;
-                margin-left: 5px;
-                margin-bottom: 5px;
-                @include grid(2,0.5%);
+                overflow: hidden;
+                // @include grid(2,0.5%);
 
                 img {
-                    height: 19vh;
+                    padding-left: 1%;
+                    height: 19.25vh;
                     object-fit: cover;
                 }
             }
@@ -119,26 +125,20 @@ section#grid {
         .center-bottom-landscape {
             position: absolute;   
             color: white; 
-            left: 43%;
             text-align: center;
-            bottom: 30px;
-
-            @include desktop {
-                left: 45%;
-            }
+            bottom: 3vh;
+            left: 50%;
+            transform: translateX(-50%);
           }
 
         //will add captions onto the portrait pictures
         .center-bottom-portrait {
-        position: absolute;   
-        color: white; 
-        left: 33%;
-        text-align: center;
-        bottom: 30px;
-
-        @include desktop {
-            left: 30%; //left margin is 30% of the width of the containing element
-        }
+            position: absolute;   
+            color: white; 
+            text-align: center;
+            bottom: 3vh;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
     }
@@ -146,6 +146,9 @@ section#grid {
 } 
 
 section#carousel {
+
+    position: relative;
+
     //holds the arrow images for the carousel
     .image-carousel {
         height: 85vh;
@@ -154,19 +157,20 @@ section#carousel {
         position: relative;
 
         @include desktop {
-            height: 50vh;
+            height: 30vw;
             width: 100%;
-            // overflow: hidden;
+            overflow: hidden;
             position: relative;
         }
 
         //adds the background image for the testimonials
         .coverimage {
             background-color: color(primary);
-
+            
             img{
                 position: absolute;
                 width: 100%;   
+                top: 2vh;
             }
 
             @include desktop {
@@ -174,37 +178,35 @@ section#carousel {
                 content: url('./images/desktop/TestimonialCoverImage_Desktop.png');
                 position: absolute;
                 width: 90%;
-                top: 45%;
-                left: 45%;
-                transform: translate(-45%, -50%);
-                padding-right: 0;
+                top: 2vh;
+                left: 50%;
+                transform: translateX(-50%);
             }
         }
 
         .inner{
             position: relative;
-            text-align: center;
+            // float: left;            
+            z-index:3;
 
             @include desktop {
-                width: 40%;
-                left: 0;
+                width: 20%;
+                left: 72%;
+                height: 100%;
             }
 
             .reisetopia-testimonials{
-                @include desktop {
-                    top: -5vh;
-                    position: relative;
-                    left: 155%;
-                    font-size: 0.85rem;
-                    text-align: left;
-                }
 
                 position: absolute;
                 display: none;
-                padding: 80px;
-                text-align: center;
-                top: 40vh;
+                top: 15%;
                 font-size: 1.3rem;
+
+                @include desktop {
+                    width: 15vw;
+                    font-size: 1.2vw;
+                    text-align: left;
+                }
                 
                 .quote {
                     font-style: italic;
@@ -217,62 +219,53 @@ section#carousel {
                     font-style: bold;
                 }
             }
-        }
-
-        .arrows{
-            //arrows in both directions
-            position: absolute;
-            display: flex;
-            left: 37%;
-            text-align: center;
-            top: 78vh;
             
-            @include desktop {
+            .arrows{
+                //arrows in both directions
                 position: absolute;
-                top: 26vh;
-                padding-top: 1em;
-                left: 72.5%;
-                text-align: left;
-            }
-
-            //right arrow for next testimonial
-            .next{
-                top: 0;
-                padding-left: 5px;
-
+                display: flex;
+                z-index: 2;
+                
                 @include desktop {
-                    width: 28%;
-                    left: 0;
-                    height: auto;
-                    top: 0;
-                    padding-left: 2px;
-                    content: url('./images/desktop/RightArrow_Desktop.png');
+                    top: 55%;
+                }
+    
+                //right arrow for next testimonial
+                .next{
+                    padding-left: 5px;
+    
+                    @include desktop {
+                        width: 28%;
+                        padding-left: 2px;
+                        content: url('./images/desktop/RightArrow_Desktop.png');
+    
+                        &:hover {
+                            color: color(arrow);
+                            transform: scale(1.15);
+                            opacity: 0.6;
+                        }
 
-                    &:hover {
-                        color: color(arrow);
-                        transform: scale(1.15);
-                        opacity: 0.6;
+                        z-index: 2;
+    
                     }
                 }
-            }
-
-            //left arrow for previous testimonial
-            .prev{
-                top: 0;
-                padding-right: 5px;
-
-                @include desktop {
-                    width: 28%;
-                    left: 0;
-                    height: auto;
+    
+                //left arrow for previous testimonial
+                .prev{
                     top: 0;
-                    padding-right: 2px;
-                    content: url('./images/desktop/LeftArrow_Desktop.png');
-
-                    &:hover {
-                        color: color(arrow);
-                        transform: scale(1.15);
-                        opacity: 0.6;
+                    padding-right: 5px;
+    
+                    @include desktop {
+                        width: 28%;
+                        padding-right: 2px;
+                        content: url('./images/desktop/LeftArrow_Desktop.png');
+    
+                        &:hover {
+                            color: color(arrow);
+                            transform: scale(1.15);
+                            opacity: 0.6;
+                        }
+    
                     }
                 }
             }
@@ -286,19 +279,17 @@ section#carousel {
 //places logo at the middle of the footer
 section#footer {
     background-color: color(primary);
-    text-align: center;
     position: relative;
-   
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+
     img{
         width: 20%;
     }
 
     @include desktop {
         content: url('./images/logo.png');
-        position: relative;
-        top: -5vh;
-        width: 10%;
-        left: 45%;
         width: 10%;
     }
 }

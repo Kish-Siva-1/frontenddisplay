@@ -10,13 +10,24 @@ body {
 
 @media (min-width: 800px) {
   .App {
-    margin: 20px 140px;
+    margin: 0 20vh;
   }
 }
 
+.App section#grid {
+  overflow: auto;
+  padding: 10px 0;
+}
+
 .App section#grid .wrapper {
-  padding: 10px;
   border-radius: 15px;
+  width: 100%;
+}
+
+@media (min-width: 800px) {
+  .App section#grid .wrapper {
+    display: table;
+  }
 }
 
 .App section#grid .wrapper .portrait {
@@ -46,14 +57,6 @@ body {
 
 .App section#grid .wrapper .landscape {
   position: relative;
-  float: left;
-  margin-right: 2%;
-  margin-bottom: 2%;
-  width: 100%;
-}
-
-.App section#grid .wrapper .landscape:nth-child(1n) {
-  margin-right: 0;
 }
 
 .App section#grid .wrapper .landscape img:hover {
@@ -71,29 +74,20 @@ body {
 
 @media (min-width: 800px) {
   .App section#grid .wrapper .portrait {
-    position: relative;
     float: left;
-    margin-right: 1%;
-    margin-bottom: 1%;
-    width: 24.25%;
+    margin-right: 0.5%;
+    margin-bottom: 0.5%;
+    width: 24.625%;
   }
   .App section#grid .wrapper .portrait:nth-child(4n) {
     margin-right: 0;
   }
   .App section#grid .wrapper .landscape {
-    position: relative;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    float: left;
-    margin-right: 0.5%;
-    margin-bottom: 0.5%;
-    width: 49.75%;
-  }
-  .App section#grid .wrapper .landscape:nth-child(2n) {
-    margin-right: 0;
+    overflow: hidden;
   }
   .App section#grid .wrapper .landscape img {
-    height: 19vh;
+    padding-left: 1%;
+    height: 19.25vh;
     -o-object-fit: cover;
        object-fit: cover;
   }
@@ -102,29 +96,25 @@ body {
 .App section#grid .wrapper .center-bottom-landscape {
   position: absolute;
   color: white;
-  left: 43%;
   text-align: center;
-  bottom: 30px;
-}
-
-@media (min-width: 800px) {
-  .App section#grid .wrapper .center-bottom-landscape {
-    left: 45%;
-  }
+  bottom: 3vh;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 .App section#grid .wrapper .center-bottom-portrait {
   position: absolute;
   color: white;
-  left: 33%;
   text-align: center;
-  bottom: 30px;
+  bottom: 3vh;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
-@media (min-width: 800px) {
-  .App section#grid .wrapper .center-bottom-portrait {
-    left: 30%;
-  }
+.App section#carousel {
+  position: relative;
 }
 
 .App section#carousel .image-carousel {
@@ -136,8 +126,9 @@ body {
 
 @media (min-width: 800px) {
   .App section#carousel .image-carousel {
-    height: 50vh;
+    height: 30vw;
     width: 100%;
+    overflow: hidden;
     position: relative;
   }
 }
@@ -149,6 +140,7 @@ body {
 .App section#carousel .image-carousel .coverimage img {
   position: absolute;
   width: 100%;
+  top: 2vh;
 }
 
 @media (min-width: 800px) {
@@ -156,41 +148,37 @@ body {
     content: url("./images/desktop/TestimonialCoverImage_Desktop.png");
     position: absolute;
     width: 90%;
-    top: 45%;
-    left: 45%;
-    -webkit-transform: translate(-45%, -50%);
-            transform: translate(-45%, -50%);
-    padding-right: 0;
+    top: 2vh;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
   }
 }
 
 .App section#carousel .image-carousel .inner {
   position: relative;
-  text-align: center;
+  z-index: 3;
 }
 
 @media (min-width: 800px) {
   .App section#carousel .image-carousel .inner {
-    width: 40%;
-    left: 0;
+    width: 20%;
+    left: 72%;
+    height: 100%;
   }
 }
 
 .App section#carousel .image-carousel .inner .reisetopia-testimonials {
   position: absolute;
   display: none;
-  padding: 80px;
-  text-align: center;
-  top: 40vh;
+  top: 15%;
   font-size: 1.3rem;
 }
 
 @media (min-width: 800px) {
   .App section#carousel .image-carousel .inner .reisetopia-testimonials {
-    top: -5vh;
-    position: relative;
-    left: 155%;
-    font-size: 0.85rem;
+    width: 15vw;
+    font-size: 1.2vw;
     text-align: left;
   }
 }
@@ -206,41 +194,32 @@ body {
   font-style: bold;
 }
 
-.App section#carousel .image-carousel .arrows {
+.App section#carousel .image-carousel .inner .arrows {
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  left: 37%;
-  text-align: center;
-  top: 78vh;
+  z-index: 2;
 }
 
 @media (min-width: 800px) {
-  .App section#carousel .image-carousel .arrows {
-    position: absolute;
-    top: 26vh;
-    padding-top: 1em;
-    left: 72.5%;
-    text-align: left;
+  .App section#carousel .image-carousel .inner .arrows {
+    top: 55%;
   }
 }
 
-.App section#carousel .image-carousel .arrows .next {
-  top: 0;
+.App section#carousel .image-carousel .inner .arrows .next {
   padding-left: 5px;
 }
 
 @media (min-width: 800px) {
-  .App section#carousel .image-carousel .arrows .next {
+  .App section#carousel .image-carousel .inner .arrows .next {
     width: 28%;
-    left: 0;
-    height: auto;
-    top: 0;
     padding-left: 2px;
     content: url("./images/desktop/RightArrow_Desktop.png");
+    z-index: 2;
   }
-  .App section#carousel .image-carousel .arrows .next:hover {
+  .App section#carousel .image-carousel .inner .arrows .next:hover {
     color: #51A0D5;
     -webkit-transform: scale(1.15);
             transform: scale(1.15);
@@ -248,21 +227,18 @@ body {
   }
 }
 
-.App section#carousel .image-carousel .arrows .prev {
+.App section#carousel .image-carousel .inner .arrows .prev {
   top: 0;
   padding-right: 5px;
 }
 
 @media (min-width: 800px) {
-  .App section#carousel .image-carousel .arrows .prev {
+  .App section#carousel .image-carousel .inner .arrows .prev {
     width: 28%;
-    left: 0;
-    height: auto;
-    top: 0;
     padding-right: 2px;
     content: url("./images/desktop/LeftArrow_Desktop.png");
   }
-  .App section#carousel .image-carousel .arrows .prev:hover {
+  .App section#carousel .image-carousel .inner .arrows .prev:hover {
     color: #51A0D5;
     -webkit-transform: scale(1.15);
             transform: scale(1.15);
@@ -272,8 +248,11 @@ body {
 
 .App section#footer {
   background-color: #f2f7f9;
-  text-align: center;
   position: relative;
+  bottom: 0%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 .App section#footer img {
@@ -283,10 +262,6 @@ body {
 @media (min-width: 800px) {
   .App section#footer {
     content: url("./images/logo.png");
-    position: relative;
-    top: -5vh;
-    width: 10%;
-    left: 45%;
     width: 10%;
   }
 }

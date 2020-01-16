@@ -71,9 +71,11 @@ class App extends React.Component {
         <section id='carousel'>
 
           <div className="image-carousel">
+
             <div className='coverimage'>
               <img src={testcovimg} alt="Testimonial Cover" />
             </div>
+
             <div className='inner'>
 
               <div className="reisetopia-testimonials">
@@ -91,13 +93,14 @@ class App extends React.Component {
                 <p className="testimonials-author">Thomas A. Edison</p>
               </div>
 
+              {/* will provide left and right arrows as well as an onclick function to move to the next slide */}
+              <div className="arrows">
+                <div className="prev" onClick={() => { this.plusSlides(-1) }} ><img src={leftarrow} alt="Left Arrow" /></div>
+                <div className="next" onClick={() => { this.plusSlides(+1) }} ><img src={rightarrow} alt="Right Arrow" /></div>
+              </div>
+
             </div>
 
-        {/* will provide left and right arrows as well as an onclick function to move to the next slide */}
-            <div className="arrows">
-              <div className="prev" onClick={() => { this.plusSlides(-1) }} ><img src={leftarrow} alt="Left Arrow" /></div>
-              <div className="next" onClick={() => { this.plusSlides(+1) }} ><img src={rightarrow} alt="Right Arrow" /></div>
-            </div>
           </div>
 
         </section>
