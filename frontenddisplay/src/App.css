@@ -8,6 +8,10 @@ body {
   background-color: #f2f7f9;
 }
 
+.App {
+  overflow: auto;
+}
+
 @media (min-width: 800px) {
   .App {
     margin: 0 20vh;
@@ -16,18 +20,11 @@ body {
 
 .App section#grid {
   overflow: auto;
-  padding: 10px 0;
 }
 
 .App section#grid .wrapper {
   border-radius: 15px;
   width: 100%;
-}
-
-@media (min-width: 800px) {
-  .App section#grid .wrapper {
-    display: table;
-  }
 }
 
 .App section#grid .wrapper .portrait {
@@ -115,12 +112,12 @@ body {
 
 .App section#carousel {
   position: relative;
+  height: 50%;
 }
 
 .App section#carousel .image-carousel {
-  height: 85vh;
   width: 100%;
-  overflow: hidden;
+  display: table;
   position: relative;
 }
 
@@ -138,9 +135,14 @@ body {
 }
 
 .App section#carousel .image-carousel .coverimage img {
-  position: absolute;
   width: 100%;
   top: 2vh;
+}
+
+@media (min-width: 800px) {
+  .App section#carousel .image-carousel .coverimage img {
+    position: absolute;
+  }
 }
 
 @media (min-width: 800px) {
@@ -156,12 +158,15 @@ body {
 }
 
 .App section#carousel .image-carousel .inner {
-  position: relative;
-  z-index: 3;
+  position: absolute;
+  top: 60%;
+  height: 40%;
 }
 
 @media (min-width: 800px) {
   .App section#carousel .image-carousel .inner {
+    overflow: hidden;
+    position: relative;
     width: 20%;
     left: 72%;
     height: 100%;
@@ -169,15 +174,20 @@ body {
 }
 
 .App section#carousel .image-carousel .inner .reisetopia-testimonials {
-  position: absolute;
+  position: relative;
   display: none;
-  top: 15%;
-  font-size: 1.3rem;
+  text-align: center;
+  width: 80%;
+  left: 11%;
+  top: 10%;
+  font-size: 4vw;
 }
 
 @media (min-width: 800px) {
   .App section#carousel .image-carousel .inner .reisetopia-testimonials {
     width: 15vw;
+    top: 15%;
+    left: 0;
     font-size: 1.2vw;
     text-align: left;
   }
@@ -199,12 +209,14 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  z-index: 2;
+  left: 37%;
+  top: 70%;
 }
 
 @media (min-width: 800px) {
   .App section#carousel .image-carousel .inner .arrows {
     top: 55%;
+    left: 0;
   }
 }
 
@@ -248,11 +260,9 @@ body {
 
 .App section#footer {
   background-color: #f2f7f9;
-  position: relative;
-  bottom: 0%;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  position: absolute;
+  width: 100%;
+  left: 40%;
 }
 
 .App section#footer img {
@@ -263,6 +273,9 @@ body {
   .App section#footer {
     content: url("./images/logo.png");
     width: 10%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
   }
 }
 /*# sourceMappingURL=App.css.map */
