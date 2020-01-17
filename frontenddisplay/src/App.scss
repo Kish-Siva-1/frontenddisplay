@@ -7,7 +7,7 @@ $colors:(
 
 $padding: 15px;
 $borders: 15px;
-$desktop: 800px;
+$desktop: 700px;
 $side-padding: 25vh;
 
 // allows us to highlight the 
@@ -39,17 +39,27 @@ body, html {
     height: 100%;
 }
 
+html {
+    overflow: auto;
+}
+
 body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin: 0;
     background-color: color(primary);
+    margin: 2%;
+
+    @include desktop {
+        margin: 1%; //first input is top and bottom whilst second input is left and right
+    }
+
 }
 
 .App {
-overflow: auto;
+margin: 0 0%;
+
     //adjustment for the desktop version
     @include desktop {
-        margin: 0 20vh; //first input is top and bottom whilst second input is left and right
+        margin: 0 10vw; //first input is top and bottom whilst second input is left and right
     }
 
 section#grid {
@@ -64,6 +74,7 @@ section#grid {
             //will split the screen into a 1 by 2 grid with a margin of 2% between the images
             @include grid(2,2%);
             position: relative;
+            z-index: 3;
 
             //hover effects whill make the image bigger and highlight it
             img:hover {
@@ -98,14 +109,18 @@ section#grid {
         //adjustments for the desktop
         @include desktop {
             .portrait {
-                @include grid(4,0.5%)
+                @include grid(4,0.5%);
+
+                img {
+                    max-height: 254px;
+                }
             }
 
             .landscape {
                 overflow: hidden;
-                // @include grid(2,0.5%);
 
                 img {
+                    max-height: 126px;
                     padding-left: 1%;
                     height: 19.25vh;
                     object-fit: cover;
@@ -224,7 +239,8 @@ section#carousel {
                 position: absolute;
                 display: flex;
                 left: 37%;
-                top: 70%;
+                top: 72%;
+                z-index: 4;
 
                 @include desktop {
                     top: 55%;
@@ -234,7 +250,7 @@ section#carousel {
                 //right arrow for next testimonial
                 .next{
                     padding-left: 5px;
-    
+
                     @include desktop {
                         width: 28%;
                         padding-left: 2px;
@@ -245,17 +261,14 @@ section#carousel {
                             transform: scale(1.15);
                             opacity: 0.6;
                         }
-
-                        z-index: 2;
     
                     }
                 }
     
                 //left arrow for previous testimonial
                 .prev{
-                    top: 0;
                     padding-right: 5px;
-    
+
                     @include desktop {
                         width: 28%;
                         padding-right: 2px;

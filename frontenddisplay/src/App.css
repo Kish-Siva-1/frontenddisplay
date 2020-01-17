@@ -2,19 +2,29 @@ body, html {
   height: 100%;
 }
 
-body {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  margin: 0;
-  background-color: #f2f7f9;
-}
-
-.App {
+html {
   overflow: auto;
 }
 
-@media (min-width: 800px) {
+body {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: #f2f7f9;
+  margin: 2%;
+}
+
+@media (min-width: 700px) {
+  body {
+    margin: 1%;
+  }
+}
+
+.App {
+  margin: 0 0%;
+}
+
+@media (min-width: 700px) {
   .App {
-    margin: 0 20vh;
+    margin: 0 10vw;
   }
 }
 
@@ -33,6 +43,7 @@ body {
   margin-bottom: 2%;
   width: 49%;
   position: relative;
+  z-index: 3;
 }
 
 .App section#grid .wrapper .portrait:nth-child(2n) {
@@ -69,7 +80,7 @@ body {
      object-fit: cover;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 700px) {
   .App section#grid .wrapper .portrait {
     float: left;
     margin-right: 0.5%;
@@ -79,10 +90,14 @@ body {
   .App section#grid .wrapper .portrait:nth-child(4n) {
     margin-right: 0;
   }
+  .App section#grid .wrapper .portrait img {
+    max-height: 254px;
+  }
   .App section#grid .wrapper .landscape {
     overflow: hidden;
   }
   .App section#grid .wrapper .landscape img {
+    max-height: 126px;
     padding-left: 1%;
     height: 19.25vh;
     -o-object-fit: cover;
@@ -121,7 +136,7 @@ body {
   position: relative;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 700px) {
   .App section#carousel .image-carousel {
     height: 30vw;
     width: 100%;
@@ -139,13 +154,13 @@ body {
   top: 2vh;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 700px) {
   .App section#carousel .image-carousel .coverimage img {
     position: absolute;
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 700px) {
   .App section#carousel .image-carousel .coverimage {
     content: url("./images/desktop/TestimonialCoverImage_Desktop.png");
     position: absolute;
@@ -163,7 +178,7 @@ body {
   height: 40%;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 700px) {
   .App section#carousel .image-carousel .inner {
     overflow: hidden;
     position: relative;
@@ -183,7 +198,7 @@ body {
   font-size: 4vw;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 700px) {
   .App section#carousel .image-carousel .inner .reisetopia-testimonials {
     width: 15vw;
     top: 15%;
@@ -210,10 +225,11 @@ body {
   display: -ms-flexbox;
   display: flex;
   left: 37%;
-  top: 70%;
+  top: 72%;
+  z-index: 4;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 700px) {
   .App section#carousel .image-carousel .inner .arrows {
     top: 55%;
     left: 0;
@@ -224,12 +240,11 @@ body {
   padding-left: 5px;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 700px) {
   .App section#carousel .image-carousel .inner .arrows .next {
     width: 28%;
     padding-left: 2px;
     content: url("./images/desktop/RightArrow_Desktop.png");
-    z-index: 2;
   }
   .App section#carousel .image-carousel .inner .arrows .next:hover {
     color: #51A0D5;
@@ -240,11 +255,10 @@ body {
 }
 
 .App section#carousel .image-carousel .inner .arrows .prev {
-  top: 0;
   padding-right: 5px;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 700px) {
   .App section#carousel .image-carousel .inner .arrows .prev {
     width: 28%;
     padding-right: 2px;
@@ -269,7 +283,7 @@ body {
   width: 20%;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 700px) {
   .App section#footer {
     content: url("./images/logo.png");
     width: 10%;
